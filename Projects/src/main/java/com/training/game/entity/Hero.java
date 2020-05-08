@@ -4,9 +4,9 @@ import org.hibernate.annotations.Proxy;
 
 import javax.persistence.*;
 
+import static javax.persistence.FetchType.*;
 
 
-@Proxy(lazy=false)
 @Entity
 public class Hero {
     @Id
@@ -19,13 +19,13 @@ public class Hero {
     @Column
     private float currentHealthPoint;
     @Column
-    private float currentManaPoont;
+    private float currentManaPoint;
     @Column
-    private float maxManaPoont;
+    private float maxManaPoint;
     @Column
-    private float pover;
+    private float power;
     @Column
-    private float spellPover;
+    private float spellPower;
     @Column
     private float defence;
     @Column
@@ -39,7 +39,7 @@ public class Hero {
     @Column
     private int skillPoint;
 
-    @ManyToOne (fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne (fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn (name = "heroes", nullable = false)
     private HeroClass heroClass;
 
@@ -72,35 +72,35 @@ public class Hero {
     }
 
     public float getCurrentManaPoont() {
-        return currentManaPoont;
+        return currentManaPoint;
     }
 
     public void setCurrentManaPoont(float currentManaPoont) {
-        this.currentManaPoont = currentManaPoont;
+        this.currentManaPoint = currentManaPoont;
     }
 
     public float getMaxManaPoont() {
-        return maxManaPoont;
+        return maxManaPoint;
     }
 
     public void setMaxManaPoont(float maxManaPoont) {
-        this.maxManaPoont = maxManaPoont;
+        this.maxManaPoint = maxManaPoont;
     }
 
     public float getPover() {
-        return pover;
+        return power;
     }
 
     public void setPover(float pover) {
-        this.pover = pover;
+        this.power = pover;
     }
 
     public float getSpellPover() {
-        return spellPover;
+        return spellPower;
     }
 
     public void setSpellPover(float spellPover) {
-        this.spellPover = spellPover;
+        this.spellPower = spellPover;
     }
 
     public float getDefence() {
@@ -166,10 +166,10 @@ public class Hero {
                 ", name='" + name  +
                 ", maxHealthPoint=" + maxHealthPoint +
                 ", currentHealthPoint=" + currentHealthPoint +
-                ", currentManaPoont=" + currentManaPoont +
-                ", maxManaPoont=" + maxManaPoont +
-                ", pover=" + pover +
-                ", spellPover=" + spellPover +
+                ", currentManaPoint=" + currentManaPoint +
+                ", maxManaPoint=" + maxManaPoint +
+                ", power=" + power +
+                ", spellPower=" + spellPower +
                 ", defence=" + defence +
                 ", chanceCriticalAttack=" + chanceCriticalAttack +
                 ", chanceDodge=" + chanceDodge +

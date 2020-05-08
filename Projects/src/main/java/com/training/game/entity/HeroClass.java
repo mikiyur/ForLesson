@@ -27,7 +27,7 @@ public class HeroClass {
         @Column
         private float chanceDodgeBonus;
 
-        @OneToMany (mappedBy = "heroClass", cascade = CascadeType.ALL)
+        @OneToMany (fetch = FetchType.LAZY, mappedBy = "heroClass", cascade = CascadeType.ALL)
         private List<Hero> heroes;
 
         public Long getId() {
