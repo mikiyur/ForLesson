@@ -47,15 +47,19 @@ public class GameApplication {
 //
 //         heroService = run.getBean(HeroService.class);
 //        heroRepository.save(hero1);
-//        HeroService heroService = run.getBean(HeroService.class);
+        HeroRepository heroRepository = run.getBean(HeroRepository.class);
+        HeroService heroService = run.getBean(HeroService.class);
 
-//        Hero hero = heroService.getOne(1L);
+        Hero hero = heroService.findById(1L);
+        Hero hero2 = heroRepository.findHeroById(1L);
 
 //        hero.setHeroClass(heroRepository.getOne(1L).getHeroClass());
 
-GetHero newGet = new GetHero();
-        System.out.println( newGet.getHero(1L));
-//        System.out.println(hero.getHeroClass().getName());
+//GetHero getHero = run.getBean(GetHero.class);
+//Hero hero = getHero.getHero(1L);
+
+        System.out.println(hero2.getClass() );
+        System.out.println(hero2.getHeroClass().getName());
 
     }
 

@@ -1,12 +1,12 @@
 package com.training.game.entity;
-
-import org.hibernate.annotations.Proxy;
-
+import lombok.Getter;
+import lombok.Setter;
 import javax.persistence.*;
 
-import static javax.persistence.FetchType.*;
 
 
+@Getter
+@Setter
 @Entity
 public class Hero {
     @Id
@@ -39,126 +39,11 @@ public class Hero {
     @Column
     private int skillPoint;
 
-    @ManyToOne (fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne (fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn (name = "heroes", nullable = false)
     private HeroClass heroClass;
 
-    public Long getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public float getMaxHealthPoint() {
-        return maxHealthPoint;
-    }
-
-    public void setMaxHealthPoint(float maxHealthPoint) {
-        this.maxHealthPoint = maxHealthPoint;
-    }
-
-    public float getCurrentHealthPoint() {
-        return currentHealthPoint;
-    }
-
-    public void setCurrentHealthPoint(float currentHealthPoint) {
-        this.currentHealthPoint = currentHealthPoint;
-    }
-
-    public float getCurrentManaPoont() {
-        return currentManaPoint;
-    }
-
-    public void setCurrentManaPoont(float currentManaPoont) {
-        this.currentManaPoint = currentManaPoont;
-    }
-
-    public float getMaxManaPoont() {
-        return maxManaPoint;
-    }
-
-    public void setMaxManaPoont(float maxManaPoont) {
-        this.maxManaPoint = maxManaPoont;
-    }
-
-    public float getPover() {
-        return power;
-    }
-
-    public void setPover(float pover) {
-        this.power = pover;
-    }
-
-    public float getSpellPover() {
-        return spellPower;
-    }
-
-    public void setSpellPover(float spellPover) {
-        this.spellPower = spellPover;
-    }
-
-    public float getDefence() {
-        return defence;
-    }
-
-    public void setDefence(float defence) {
-        this.defence = defence;
-    }
-
-    public float getChanceCriticalAttack() {
-        return chanceCriticalAttack;
-    }
-
-    public void setChanceCriticalAttack(float chanceCriticalAttack) {
-        this.chanceCriticalAttack = chanceCriticalAttack;
-    }
-
-    public float getChanceDodge() {
-        return chanceDodge;
-    }
-
-    public void setChanceDodge(float chanceDodge) {
-        this.chanceDodge = chanceDodge;
-    }
-
-    public int getLevel() {
-        return level;
-    }
-
-    public void setLevel(int level) {
-        this.level = level;
-    }
-
-    public int getLevelProgress() {
-        return levelProgress;
-    }
-
-    public void setLevelProgress(int levelProgress) {
-        this.levelProgress = levelProgress;
-    }
-
-    public int getSkillPoint() {
-        return skillPoint;
-    }
-
-    public void setSkillPoint(int skillPoint) {
-        this.skillPoint = skillPoint;
-    }
-
-    public HeroClass getHeroClass() {
-        return heroClass;
-    }
-
-    public void setHeroClass(HeroClass heroClass) {
-        this.heroClass = heroClass;
-    }
-
+    
     @Override
     public String toString() {
         return "Hero{" +
