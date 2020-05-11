@@ -2,11 +2,12 @@ package com.training.game.service;
 
 import com.training.game.entity.Hero;
 import org.springframework.stereotype.Service;
-
+import org.springframework.transaction.annotation.Transactional;
 
 
 
 public interface HeroService {
-    public Hero save (Hero hero);
-    public Hero getOne (Long Id);
+     Hero save (Hero hero);
+     Hero getOne (Long id);
+     Hero findById (Long id);
 }

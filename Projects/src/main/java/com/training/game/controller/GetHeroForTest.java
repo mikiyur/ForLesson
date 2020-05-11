@@ -4,14 +4,18 @@ import com.training.game.entity.Hero;
 import com.training.game.service.HeroService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 
+@Transactional
 @Controller
-public class GetHero {
+public class GetHeroForTest {
     @Autowired
     private HeroService heroService;
     public  Hero getHero(Long heroId) {
         Hero hero = heroService.getOne(heroId);
-        System.out.println(hero);
+        hero.getHeroClass().getChanceCriticalAttackBonus();
+//        System.out.println(hero.getHeroClass().getName());
+
        return hero;
     }
 

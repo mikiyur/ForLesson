@@ -15,6 +15,8 @@ public class Hero {
     @Column
     private String name;
     @Column
+    private String pictureURL;
+    @Column
     private float maxHealthPoint;
     @Column
     private float currentHealthPoint;
@@ -43,24 +45,25 @@ public class Hero {
     @JoinColumn (name = "heroes", nullable = false)
     private HeroClass heroClass;
 
-    
+
     @Override
     public String toString() {
-        return "Hero{" +
-                "id=" + id +
-                ", name='" + name  +
-                ", maxHealthPoint=" + maxHealthPoint +
-                ", currentHealthPoint=" + currentHealthPoint +
-                ", currentManaPoint=" + currentManaPoint +
-                ", maxManaPoint=" + maxManaPoint +
-                ", power=" + power +
-                ", spellPower=" + spellPower +
-                ", defence=" + defence +
-                ", chanceCriticalAttack=" + chanceCriticalAttack +
-                ", chanceDodge=" + chanceDodge +
-                ", level=" + level +
-                ", levelProgress=" + levelProgress +
-                ", skillPoint=" + skillPoint +
+        return "Hero {" +
+                "id= " + id +
+                ", name= " + name  +
+                ", pictureURL= " + pictureURL +
+                ", maxHealthPoint= " + maxHealthPoint +
+                ", currentHealthPoint= " + currentHealthPoint +
+                ", currentManaPoint= " + currentManaPoint +
+                ", maxManaPoint= " + maxManaPoint +
+                ", power= " + power +
+                ", spellPower= " + spellPower +
+                ", defence= " + defence +
+                ", chanceCriticalAttack= " + chanceCriticalAttack +
+                ", chanceDodge= " + chanceDodge +
+                ", level= " + level +
+                ", levelProgress= " + levelProgress +
+                ", skillPoint= " + skillPoint +
                 '}';
     }
 }

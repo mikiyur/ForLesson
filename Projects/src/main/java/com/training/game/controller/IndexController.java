@@ -25,6 +25,7 @@ public class IndexController {
 
         Hero hero = heroService.getOne(heroId);
         System.out.println(hero);
+        System.out.println(hero.getHeroClass().getName());
 
 
         model.addAttribute("hero" ,new HeroDTO(hero));

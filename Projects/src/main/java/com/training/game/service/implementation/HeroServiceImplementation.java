@@ -5,6 +5,8 @@ import com.training.game.repository.HeroRepository;
 import com.training.game.service.HeroService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 
 @Service
 public class HeroServiceImplementation implements HeroService {
@@ -21,4 +23,9 @@ public class HeroServiceImplementation implements HeroService {
     public Hero getOne(Long id) {
         return heroRepository.getOne(id);
     }
+    @Override
+    public Hero findById(Long id) {
+        return heroRepository.findById(id).get();
+    }
+
 }
