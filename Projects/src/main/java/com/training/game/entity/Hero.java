@@ -41,9 +41,13 @@ public class Hero {
     @Column
     private int skillPoint;
 
-    @ManyToOne (fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn (name = "heroes", nullable = false)
+    @ManyToOne (fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn (name = "hero_class_id", nullable = false)
     private HeroClass heroClass;
+
+    @OneToOne (cascade = CascadeType.ALL, mappedBy = "inventory_id")
+    private Inventory inventory;
+
 
 
     @Override
