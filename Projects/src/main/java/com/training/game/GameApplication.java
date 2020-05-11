@@ -1,7 +1,6 @@
 package com.training.game;
 
-import com.training.game.entity.Hero;
-import com.training.game.entity.HeroClass;
+import com.training.game.entity.*;
 import com.training.game.repository.HeroRepository;
 import com.training.game.service.HeroService;
 import org.springframework.boot.SpringApplication;
@@ -19,33 +18,44 @@ public class GameApplication {
     public static void main(String[] args) {
         ConfigurableApplicationContext run = SpringApplication.run(GameApplication.class, args);
 
-//        Hero hero1 = new Hero();
-//        Hero hero2 = new Hero();
-//        Hero hero3 = new Hero();
+        Hero hero1 = new Hero();
+        Hero hero2 = new Hero();
+        hero1.setName("Yura");
+        hero2.setName("Oleg");
+
         HeroClass mag = new HeroClass();
         mag.setName("Mag");
-//        hero1.setName("Yura");
-//        hero2.setName("Oleg");
-//        hero3.setName("Vasia");
-//        hero1.setHeroClass(mag);
-//        hero2.setHeroClass(mag);
-//        hero3.setHeroClass(mag);
-        List <Hero> heroes = new ArrayList<Hero>();
-//        heroes.add(hero1);
-//        heroes.add(hero2);
-//        heroes.add(hero3);
-        mag.setHeroes(heroes);
+        mag.addHero(hero1);
+        mag.addHero(hero2);
+
+        hero1.setHeroClass(mag);
+        hero2.setHeroClass(mag);
+
+
+        Potion potion1 = new Potion();
+        potion1.setName("BigHeath");
+        Artifact artifact1 = new Artifact();
+        artifact1.setName("Axe");
+
+        Inventory inventory = new Inventory();
+        inventory.addArtifact(artifact1);
+        inventory.addPotion(potion1);
+
+        artifact1.setInventory(inventory);
+        potion1.setInventory(inventory);
+
+        hero1.setInventory(inventory);
+        inventory.setHero(hero1);
+
+
 //
 //
-//         heroService = run.getBean(HeroService.class);
-//        heroRepository.save(hero1);
-        HeroRepository heroRepository = run.getBean(HeroRepository.class);
         HeroService heroService = run.getBean(HeroService.class);
+//        heroService.save(hero1);
+//        heroRepository.save(hero1);
+//        HeroRepository heroRepository = run.getBean(HeroRepository.class);
 
-        Hero hero = heroService.findById(1L);
-        Hero hero2 = heroRepository.findHeroById(1L);
 
-//        hero.setHeroClass(heroRepository.getOne(1L).getHeroClass());
 
 //GetHero getHero = run.getBean(GetHero.class);
 //Hero hero = getHero.getHero(1L);

@@ -26,5 +26,4 @@ public class Artifact {
     private Shop shop;
 
 
-
 }

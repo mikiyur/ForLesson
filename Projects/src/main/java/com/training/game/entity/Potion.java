@@ -18,7 +18,7 @@ public class Potion {
     private String pictureURL;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "inventory_id")
+    @JoinColumn//(name = "inventory_id")
     private Inventory inventory;
 
     @ManyToOne (cascade = CascadeType.ALL)

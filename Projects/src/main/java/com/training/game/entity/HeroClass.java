@@ -1,4 +1,5 @@
 package com.training.game.entity;
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 import javax.persistence.*;
@@ -30,5 +31,10 @@ public class HeroClass {
         private float chanceDodgeBonus;
 
         @OneToMany (fetch = FetchType.LAZY, mappedBy = "heroClass", cascade = CascadeType.ALL)
+        @Setter (AccessLevel.PRIVATE)
         private List<Hero> heroes;
+
+        public void addHero (Hero hero){
+            heroes.add(hero);
+        }
 }
