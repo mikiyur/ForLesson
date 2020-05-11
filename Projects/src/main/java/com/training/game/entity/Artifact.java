@@ -9,10 +9,22 @@ import javax.persistence.*;
 @Setter
 @Entity
 public class Artifact {
+    @Id
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    private Long id;
+    @Column
     private String name;
+    @Column
+    private String pictureURL;
 
     @ManyToOne (cascade = CascadeType.ALL)
     @JoinColumn (name = "inventory_id")
     private Inventory inventory;
+
+    @ManyToOne (cascade = CascadeType.ALL)
+    @JoinColumn (name = "shop_id")
+    private Shop shop;
+
+
 
 }
