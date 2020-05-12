@@ -1,6 +1,7 @@
 package com.training.game.service.implementation;
 
 import com.training.game.entity.Hero;
+import com.training.game.entity.SpellBook;
 import com.training.game.repository.HeroRepository;
 import com.training.game.service.HeroService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +19,7 @@ public class HeroServiceImplementation implements HeroService {
     public Hero save(Hero hero) {
         return heroRepository.save(hero);
     }
-    @Transactional
+
     @Override
     public Hero getOne(Long id) {return heroRepository.getOne(id);
     }
@@ -26,5 +27,16 @@ public class HeroServiceImplementation implements HeroService {
     public Hero findById(Long id) {
         return heroRepository.findById(id).get() ;
     }
+
+    @Transactional
+    @Override
+    public Hero getHeroLikeFTLazy(Long id) {
+        Hero hero = heroRepository.getOne(id);
+        hero.getSpellBook().getSpells().size();
+        hero.getInventory().getArtifacts().size();
+        hero.getInventory().getPotions().size();
+        return hero;
+    }
+
 
 }

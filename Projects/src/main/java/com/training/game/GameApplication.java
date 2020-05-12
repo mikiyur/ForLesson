@@ -39,7 +39,11 @@ public class GameApplication {
 //        hero1.getInventory().addPotion(potion1);
 
         HeroService heroService = run.getBean(HeroService.class);
-//        heroService.save(hero1);
+        Hero hero1 = heroService.getSpellBook(1l);
+        hero1.getSpellBook().addSpell(new Spell());
+
+//        System.out.println( heroService.findById(1l).getSpellBook());
+        heroService.save(hero1);
  //       System.out.println(heroService.findById(2l).getInventory());
 
     }
