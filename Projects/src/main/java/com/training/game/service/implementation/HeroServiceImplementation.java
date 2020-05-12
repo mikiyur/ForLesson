@@ -18,14 +18,13 @@ public class HeroServiceImplementation implements HeroService {
     public Hero save(Hero hero) {
         return heroRepository.save(hero);
     }
-
+    @Transactional
     @Override
-    public Hero getOne(Long id) {
-        return heroRepository.getOne(id);
+    public Hero getOne(Long id) {return heroRepository.getOne(id);
     }
     @Override
     public Hero findById(Long id) {
-        return heroRepository.findById(id).get();
+        return heroRepository.findById(id).get() ;
     }
 
 }

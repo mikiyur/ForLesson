@@ -45,9 +45,11 @@ public class Hero {
     @JoinColumn (name = "hero_class_id", nullable = false)
     private HeroClass heroClass;
 
-    @OneToOne (cascade = CascadeType.ALL, mappedBy = "hero")
-    private Inventory inventory;
+    @OneToOne (cascade = CascadeType.ALL, mappedBy = "hero", orphanRemoval = true)
+    private Inventory inventory = new Inventory(this);
 
+    @OneToOne (cascade = CascadeType.ALL, mappedBy = "hero", orphanRemoval = true)
+    private SpellBook spellBook = new SpellBook(this);
 
 
     @Override

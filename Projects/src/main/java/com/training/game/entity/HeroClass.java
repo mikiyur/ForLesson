@@ -31,11 +31,12 @@ public class HeroClass {
         @Column
         private float chanceDodgeBonus;
 
-        @OneToMany (fetch = FetchType.LAZY, mappedBy = "heroClass", cascade = CascadeType.ALL)
+        @OneToMany (fetch = FetchType.LAZY, mappedBy = "heroClass", cascade = CascadeType.ALL, orphanRemoval = true)
         @Setter (AccessLevel.PRIVATE)
         private List<Hero> heroes = new ArrayList<Hero>();
 
         public void addHero (Hero hero){
             heroes.add(hero);
+            hero.setHeroClass(this);
         }
 }
