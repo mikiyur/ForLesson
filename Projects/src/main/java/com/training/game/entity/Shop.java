@@ -15,9 +15,9 @@ public class Shop {
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Long Id;
 
-    @OneToMany (fetch = FetchType.EAGER,cascade = CascadeType.ALL, mappedBy = "shop")
+    @OneToMany (fetch = FetchType.LAZY,cascade = CascadeType.ALL, mappedBy = "shop")
     private List <Potion> potions;
 
-    @OneToMany (fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "shop")
+    @OneToMany (fetch = FetchType.LAZY,cascade = CascadeType.ALL, mappedBy = "shop")
     private List <Artifact> artifacts;
 }

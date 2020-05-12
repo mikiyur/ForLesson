@@ -45,7 +45,7 @@ public class Hero {
     @JoinColumn (name = "hero_class_id", nullable = false)
     private HeroClass heroClass;
 
-    @OneToOne (cascade = CascadeType.ALL, mappedBy = "inventory_id")
+    @OneToOne (cascade = CascadeType.ALL, mappedBy = "hero")
     private Inventory inventory;
 
 

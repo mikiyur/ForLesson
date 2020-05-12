@@ -25,11 +25,10 @@ public class GameApplication {
 
         HeroClass mag = new HeroClass();
         mag.setName("Mag");
-        mag.addHero(hero1);
-        mag.addHero(hero2);
-
         hero1.setHeroClass(mag);
         hero2.setHeroClass(mag);
+        mag.addHero(hero1);
+        mag.addHero(hero2);
 
 
         Potion potion1 = new Potion();
@@ -37,31 +36,23 @@ public class GameApplication {
         Artifact artifact1 = new Artifact();
         artifact1.setName("Axe");
 
-        Inventory inventory = new Inventory();
-        inventory.addArtifact(artifact1);
-        inventory.addPotion(potion1);
-
-        artifact1.setInventory(inventory);
-        potion1.setInventory(inventory);
-
-        hero1.setInventory(inventory);
-        inventory.setHero(hero1);
-
-
+        Inventory inventory1 = new Inventory();
+        Inventory inventory2 = new Inventory();
+        inventory1.addArtifact(artifact1);
+        inventory1.addPotion(potion1);
 //
-//
+        artifact1.setInventory(inventory1);
+        potion1.setInventory(inventory1);
+
+        hero1.setInventory(inventory1);
+        inventory1.setHero(hero1);
+        hero2.setInventory(inventory2);
+        inventory2.setHero(hero2);
+
+
         HeroService heroService = run.getBean(HeroService.class);
-//        heroService.save(hero1);
-//        heroRepository.save(hero1);
-//        HeroRepository heroRepository = run.getBean(HeroRepository.class);
-
-
-
-//GetHero getHero = run.getBean(GetHero.class);
-//Hero hero = getHero.getHero(1L);
-
-        System.out.println(hero2.getClass() );
-        System.out.println(hero2.getHeroClass().getName());
+ //       heroService.save(hero1);
+        System.out.println(heroService.getOne(2l).getInventory().getArtifacts().get(0).getName());
 
     }
 

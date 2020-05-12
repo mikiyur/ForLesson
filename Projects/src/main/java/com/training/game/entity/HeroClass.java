@@ -3,6 +3,7 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Setter
@@ -32,7 +33,7 @@ public class HeroClass {
 
         @OneToMany (fetch = FetchType.LAZY, mappedBy = "heroClass", cascade = CascadeType.ALL)
         @Setter (AccessLevel.PRIVATE)
-        private List<Hero> heroes;
+        private List<Hero> heroes = new ArrayList<Hero>();
 
         public void addHero (Hero hero){
             heroes.add(hero);

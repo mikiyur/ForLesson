@@ -17,11 +17,11 @@ public class Potion {
     @Column
     private String pictureURL;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn//(name = "inventory_id")
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn (name = "inventory_id")
     private Inventory inventory;
 
-    @ManyToOne (cascade = CascadeType.ALL)
+    @ManyToOne (fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn (name = "shop_id")
     private Shop shop;
 
