@@ -34,6 +34,11 @@ public class User {
 
     public void addHero (Hero hero){
         heroes.add(hero);
+        hero.setUser(this);
+    }
+    public void removeHero (Hero hero){
+        heroes.remove(hero);
         hero.setUser(null);
     }
+
 }

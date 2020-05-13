@@ -41,9 +41,9 @@ public class GameApplication {
 
         HeroService heroService = run.getBean(HeroService.class);
  //       Hero hero1 = heroService.getHeroLikeFTLazy(1l);
-        Set <Hero> heroset = heroService.findAllByUserNull();
-        System.out.println(heroset.iterator().next());
-        System.out.println(heroset.iterator().next());
+        List <Hero> heroList = heroService.findAllByUserNull();
+
+        System.out.println(heroList);
 
 
 

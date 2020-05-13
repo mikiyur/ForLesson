@@ -18,6 +18,9 @@ public class SpellBook {
     @Id
     private Long id;
 
+    @Column
+    private String pictureURL;
+
     @OneToOne
     @JoinColumn (name = "hero_id")
     @MapsId

@@ -5,9 +5,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Set;
 
 @Transactional
 public interface HeroRepository extends JpaRepository <Hero, Long> {
- Set <Hero> findAllByUserNull ();
+ List<Hero> findAllByUserNull ();
 }
