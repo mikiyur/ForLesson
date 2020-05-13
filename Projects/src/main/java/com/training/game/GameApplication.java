@@ -9,6 +9,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @SpringBootApplication
 public class GameApplication {
@@ -39,12 +40,16 @@ public class GameApplication {
 //        hero1.getInventory().addPotion(potion1);
 
         HeroService heroService = run.getBean(HeroService.class);
-        Hero hero1 = heroService.getSpellBook(1l);
-        hero1.getSpellBook().addSpell(new Spell());
+ //       Hero hero1 = heroService.getHeroLikeFTLazy(1l);
+        Set <Hero> heroset = heroService.findAllByUserNull();
+        System.out.println(heroset.iterator().next());
+        System.out.println(heroset.iterator().next());
+
+
 
 //        System.out.println( heroService.findById(1l).getSpellBook());
-        heroService.save(hero1);
- //       System.out.println(heroService.findById(2l).getInventory());
+//        heroService.save(hero1);
+//        System.out.println(heroService.findById(2l).getInventory());
 
     }
 

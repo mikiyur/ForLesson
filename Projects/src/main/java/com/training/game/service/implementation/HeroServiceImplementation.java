@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Set;
+
 
 @Service
 public class HeroServiceImplementation implements HeroService {
@@ -28,6 +30,7 @@ public class HeroServiceImplementation implements HeroService {
         return heroRepository.findById(id).get() ;
     }
 
+
     @Transactional
     @Override
     public Hero getHeroLikeFTLazy(Long id) {
@@ -36,6 +39,11 @@ public class HeroServiceImplementation implements HeroService {
         hero.getInventory().getArtifacts().size();
         hero.getInventory().getPotions().size();
         return hero;
+    }
+
+    @Override
+    public Set<Hero> findAllByUserNull() {
+        return heroRepository.findAllByUserNull();
     }
 
 

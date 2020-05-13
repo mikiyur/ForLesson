@@ -11,17 +11,14 @@ import java.util.List;
 
 @Setter
 @Getter
-@Entity
 @NoArgsConstructor
+@Entity
 public class Inventory {
 
     @Id
     private Long id;
 
-    @Column
     private int coins;
-
-
 
     @OneToOne
     @JoinColumn (name = "hero_id")

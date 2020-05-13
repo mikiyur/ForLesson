@@ -16,23 +16,23 @@ public class Hero {
     private String name;
     @Column
     private String pictureURL;
-    @Column
+    @Column //(precision = 2)
     private float maxHealthPoint;
-    @Column
+    @Column //(precision = 2)
     private float currentHealthPoint;
-    @Column
+    @Column //(precision = 2)
     private float currentManaPoint;
-    @Column
+    @Column //(precision = 2)
     private float maxManaPoint;
-    @Column
+    @Column //(precision = 2)
     private float power;
-    @Column
+    @Column //(precision = 2)
     private float spellPower;
-    @Column
+    @Column //(precision = 2)
     private float defence;
-    @Column
+    @Column //(precision = 2)
     private float chanceCriticalAttack;
-    @Column
+    @Column //(precision = 2)
     private float chanceDodge;
     @Column
     private int level;
@@ -41,7 +41,11 @@ public class Hero {
     @Column
     private int skillPoint;
 
-    @ManyToOne (fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne (cascade = CascadeType.ALL)
+    @JoinColumn (name = "user_id")
+    private User user;
+
+    @ManyToOne (cascade = CascadeType.ALL)
     @JoinColumn (name = "hero_class_id", nullable = false)
     private HeroClass heroClass;
 
