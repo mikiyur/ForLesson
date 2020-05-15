@@ -2,7 +2,8 @@ package com.training.game;
 
 public class ForTests {
     public static void main(String[] args) {
-        printLevelTab();
+
+//        printLevelTab();
 
 
     }

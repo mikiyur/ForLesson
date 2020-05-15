@@ -2,7 +2,10 @@ package com.training.game;
 
 import com.training.game.entity.*;
 import com.training.game.repository.HeroRepository;
+import com.training.game.repository.MonsterRepository;
 import com.training.game.service.HeroService;
+import com.training.game.service.LocationService;
+import com.training.game.service.MonsterService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -39,11 +42,30 @@ public class GameApplication {
 //        hero1.getInventory().addArtifact(artifact1);
 //        hero1.getInventory().addPotion(potion1);
 
-        HeroService heroService = run.getBean(HeroService.class);
- //       Hero hero1 = heroService.getHeroLikeFTLazy(1l);
-        List <Hero> heroList = heroService.findAllByUserNull();
+//        Monster monster = new Monster();
+//        monster.setName("firstMoster");
+//        monster.setMaxHealthPoint(100);
 
-        System.out.println(heroList);
+//        Location location1 = new Location();
+//        location1.setName("FirstLocation");
+//        location1.setMinLevel(1);
+        LocationService locationService = run.getBean(LocationService.class);
+        Location location1 = locationService.findById(1l);
+
+
+        MonsterService monsterService = run.getBean (MonsterService.class);
+//        monsterService.save(monster);
+//        Monster monster = monsterService.findById(2l);
+
+        location1.removeMonster(location1.getMonsters().iterator().next());
+        locationService.save(location1);
+
+
+        HeroService heroService = run.getBean(HeroService.class);
+//        Hero hero1 = heroService.getHeroLikeFTLazy(1l);
+//        List <Hero> heroList = heroService.findAllByUserNull();
+
+//        System.out.println(heroList);
 
 
 

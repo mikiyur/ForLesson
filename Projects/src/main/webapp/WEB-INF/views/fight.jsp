@@ -22,7 +22,7 @@
     </div>
     <div class="row mt-4">
         <div class="col-2 offset-5">
-            <button type="submit" class="btn btn-success btn-lg">Fight</button>
+            <button type="submit" class="btn btn-success btn-lg">Fighter</button>
         </div>
     </div>
 </form>

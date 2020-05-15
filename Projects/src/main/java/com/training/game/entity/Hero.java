@@ -52,9 +52,9 @@ public class Hero {
     @JoinColumn (name = "hero_class_id", nullable = false)
     private HeroClass heroClass;
 
-    @OneToMany (fetch = FetchType.LAZY,cascade = CascadeType.ALL, mappedBy = "hero")
+    @ManyToMany (fetch = FetchType.LAZY, mappedBy = "passedBy")
     @Setter (AccessLevel.PRIVATE)
-    private List <Location> locations;
+    private List <Location> passedLocations;
 
     @OneToOne (cascade = CascadeType.ALL, mappedBy = "hero", orphanRemoval = true)
     private Inventory inventory = new Inventory(this);
@@ -62,13 +62,13 @@ public class Hero {
     @OneToOne (cascade = CascadeType.ALL, mappedBy = "hero", orphanRemoval = true)
     private SpellBook spellBook = new SpellBook(this);
 
-    public void addLocation (Location location){
-        locations.add(location);
-        location.setHero(this);
+    public void addLocation (Location passedLocation){
+        passedLocations.add(passedLocation);
+        passedLocation.addPassedBy(this);
     }
-    public void removeLocation (Location location){
-        locations.remove(location);
-        location.setHero(null);
+    public void removeLocation (Location passedLocation){
+        passedLocations.remove(passedLocation);
+        passedLocation.removePassedBy(this);
     }
 
 
