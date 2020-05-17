@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class IndexController {
@@ -16,20 +17,8 @@ public class IndexController {
     private HeroService heroService;
 
     @GetMapping ("/")
-    public String index (){
-        return "index";
+    public String index(@RequestParam(name="title", required=false, defaultValue="Yura") String title, Model model) {
+        model.addAttribute("title", title);
+        return "login";
     }
-    @GetMapping("/fight/{heroId}")
-    public String getFightJsp(Model model,
-                              @PathVariable(name = "heroId") Long heroId){
-
-        Hero hero = heroService.getOne(heroId);
-        System.out.println(hero);
-        System.out.println(hero.getHeroClass().getName());
-
-
-        model.addAttribute("hero" ,new HeroDTO(hero));
-        return "fight";
-    }
-
 }

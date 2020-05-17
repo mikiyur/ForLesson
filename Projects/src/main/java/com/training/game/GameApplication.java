@@ -46,20 +46,6 @@ public class GameApplication {
 //        monster.setName("firstMoster");
 //        monster.setMaxHealthPoint(100);
 
-//        Location location1 = new Location();
-//        location1.setName("FirstLocation");
-//        location1.setMinLevel(1);
-        LocationService locationService = run.getBean(LocationService.class);
-        Location location1 = locationService.findById(1l);
-
-
-        MonsterService monsterService = run.getBean (MonsterService.class);
-//        monsterService.save(monster);
-//        Monster monster = monsterService.findById(2l);
-
-        location1.removeMonster(location1.getMonsters().iterator().next());
-        locationService.save(location1);
-
 
         HeroService heroService = run.getBean(HeroService.class);
 //        Hero hero1 = heroService.getHeroLikeFTLazy(1l);
