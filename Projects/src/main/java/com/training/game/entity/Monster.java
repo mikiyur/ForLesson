@@ -13,11 +13,15 @@ public class Monster {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private Integer group;
+
     private String name;
 
     private boolean boss;
 
     private String pictureURL;
+
+    private int level; // to coins and exp
     @Column(precision = 2)
     private float maxHealthPoint;
     @Column (precision = 2)
@@ -33,9 +37,11 @@ public class Monster {
     @Column (precision = 2)
     private float defence;
     @Column (precision = 2)
-    private float chanceCriticalAttack;
+    private float criticalAttack; //%
+    @Column(precision = 2)
+    private float chanceCriticalAttack; //% 0-75%
     @Column (precision = 2)
-    private float chanceDodge;
+    private float chanceDodge; //% 0-75%
 
     @ManyToOne (fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn (name = "location_id")

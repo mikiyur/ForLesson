@@ -2,6 +2,7 @@
 <html lang="en" >
 <head>
     <meta charset="utf-8">
+    <title>Log in</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 </head>
 
@@ -31,7 +32,6 @@
                     <p> </p>
                     <p> </p>
                     <p class="mt-4 mb-3 text-muted" > Made by Yuriy Mykytyuk 2020-2020</p>
-
                 </form:form>
             </div>
         </div>

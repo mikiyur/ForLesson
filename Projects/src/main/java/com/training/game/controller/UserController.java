@@ -19,4 +19,9 @@ public class UserController {
         return "login";
     }
 
+    @GetMapping("/newhero")
+    public String newhero(){
+        return "newhero";
+    }
+
 }

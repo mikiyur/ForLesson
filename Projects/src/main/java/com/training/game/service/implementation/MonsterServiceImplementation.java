@@ -17,7 +17,7 @@ public class MonsterServiceImplementation implements MonsterService {
 
     @Override
     public Monster getOne(Long id) {
-        return null;
+        return monsterRepository.getOne(id);
     }
 
     @Override

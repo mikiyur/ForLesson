@@ -13,7 +13,7 @@ public class GetHeroForTest {
     private HeroService heroService;
     public  Hero getHero(Long heroId) {
         Hero hero = heroService.getOne(heroId);
-        hero.getHeroClass().getChanceCriticalAttackBonus();
+        hero.getHeroClass().getChanceCriticalAttackPerSkillPoint();
 //        System.out.println(hero.getHeroClass().getName());
 
        return hero;

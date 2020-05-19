@@ -19,6 +19,6 @@ public class IndexController {
     @GetMapping ("/")
     public String index(@RequestParam(name="title", required=false, defaultValue="Yura") String title, Model model) {
         model.addAttribute("title", title);
-        return "login";
+        return "index";
     }
 }

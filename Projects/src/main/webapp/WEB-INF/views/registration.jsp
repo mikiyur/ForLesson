@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Registration</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 </head>
 <body class="text-center">
@@ -11,7 +11,6 @@
 
 
 <div class="container">
-
     <div class="card bg-light">
         <article class="card-body mx-auto" style="max-width: 400px; margin: 10px">
             <img src="https://i.ibb.co/312Xn3z/6ewsd6u2-900.jpg" alt="Game" width="180" height="180">
@@ -22,7 +21,7 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="fa fa-user"></i> </span>
                     </div>
-                    <input name="" class="form-control" placeholder="Full name" type="text">
+                    <input name="" class="form-control" placeholder="User name" type="text">
                 </div> <!-- form-group// -->
                 <div class="form-group input-group">
                     <div class="input-group-prepend">
@@ -42,17 +41,7 @@
                     </select>
                     <input name="" class="form-control" placeholder="Phone number" type="text">
                 </div> <!-- form-group// -->
-                <div class="form-group input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text"> <i class="fa fa-building"></i> </span>
-                    </div>
-                    <select class="form-control">
-                        <option selected=""> Select job type</option>
-                        <option>Designer</option>
-                        <option>Manager</option>
-                        <option>Accaunting</option>
-                    </select>
-                </div> <!-- form-group end.// -->
+
                 <div class="form-group input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="fa fa-lock"></i> </span>

@@ -3,10 +3,12 @@ package com.training.game;
 public class ForTests {
     public static void main(String[] args) {
 
-//        printLevelTab();
+        printLevelTab();
+
+        }
 
 
-    }
+
     public static void printLevelTab() {
         int level;
         for (level = 1; level <= 50; level++) {
