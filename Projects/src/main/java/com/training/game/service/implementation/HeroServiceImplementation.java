@@ -1,9 +1,12 @@
 package com.training.game.service.implementation;
 
 import com.training.game.entity.Hero;
+import com.training.game.entity.Location;
 import com.training.game.entity.SpellBook;
 import com.training.game.repository.HeroRepository;
+import com.training.game.service.HeroClassService;
 import com.training.game.service.HeroService;
+import com.training.game.service.LocationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,6 +21,8 @@ public class HeroServiceImplementation implements HeroService {
 
     @Autowired
     private HeroRepository heroRepository;
+    @Autowired
+    private LocationService locationService;
 
     @Override
     public Hero save(Hero hero) {
@@ -46,6 +51,15 @@ public class HeroServiceImplementation implements HeroService {
     @Override
     public List<Hero> findAllByUserNull() {
         return heroRepository.findAllByUserNull();
+    }
+
+    @Override
+    public void setNewCurrentLocation(Hero hero, Location location) {
+        location.setId(null);
+        location.getMonsters().forEach(x-> x.setId(null));
+        hero.setCurrentLocation(location);
+        location.setCurrentHero(hero);
+        locationService.save(location);
     }
 
 

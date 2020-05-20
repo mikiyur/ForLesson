@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Set;
 
 @Transactional
+@Repository
 public interface HeroRepository extends JpaRepository <Hero, Long> {
  List<Hero> findAllByUserNull ();
 }

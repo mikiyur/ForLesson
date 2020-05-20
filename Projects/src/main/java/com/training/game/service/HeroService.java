@@ -1,6 +1,7 @@
 package com.training.game.service;
 
 import com.training.game.entity.Hero;
+import com.training.game.entity.Location;
 import com.training.game.entity.SpellBook;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,4 +16,5 @@ public interface HeroService {
      Hero findById (Long id);
      Hero getHeroLikeFTLazy(Long id);
      List<Hero> findAllByUserNull ();
+     void setNewCurrentLocation (Hero hero, Location location);
 }

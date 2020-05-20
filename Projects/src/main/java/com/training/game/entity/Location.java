@@ -20,13 +20,17 @@ public class Location {
     private String pictureURL;
     private int minLevel;
 
-    @OneToMany (fetch = FetchType.EAGER,mappedBy = "location",cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany (fetch = FetchType.EAGER, mappedBy = "location",cascade = CascadeType.ALL, orphanRemoval = true)
     @Setter (value = AccessLevel.PRIVATE)
     private List<Monster> monsters;
 
     @ManyToMany
     @Setter (value = AccessLevel.PRIVATE)
     private List<Hero> passedBy;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "current_hero_id")
+    private  Hero currentHero;
 
 
 

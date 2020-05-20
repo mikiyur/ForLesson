@@ -60,6 +60,10 @@ public class Hero {
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "hero", orphanRemoval = true)
     private SpellBook spellBook = new SpellBook(this);
 
+    @OneToOne(mappedBy = "currentHero", cascade = CascadeType.ALL)
+    @JoinColumn(name = "current_lication_id")
+    private Location currentLocation;
+
     public void addLocation(Location passedLocation) {
         passedLocations.add(passedLocation);
         passedLocation.addPassedBy(this);
@@ -69,6 +73,7 @@ public class Hero {
         passedLocations.remove(passedLocation);
         passedLocation.removePassedBy(this);
     }
+
 
 
     @Override

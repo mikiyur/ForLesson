@@ -13,11 +13,13 @@ public class Monster {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Integer group;
+    private int gang;
 
     private String name;
 
     private boolean boss;
+
+    private boolean dead = false;
 
     private String pictureURL;
 
