@@ -19,6 +19,11 @@ public class LocationServiceImplementation implements LocationService {
     }
 
     @Override
+    public void deleteById(Long id) {
+        locationRepository.deleteById(id);
+    }
+
+    @Override
     public Location findById(Long id) {
         return locationRepository.findById(id).get();
     }

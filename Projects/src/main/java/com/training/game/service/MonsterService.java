@@ -10,7 +10,7 @@ public interface MonsterService {
     Monster findById (Long id);
     Monster removeById (Long id);
     List <Monster> findAllByLocation(Long id);
-
+    List <Monster> findAllByLocationNull ();
     List <Monster> separateOneGang (List <Monster> monsters);
 
 

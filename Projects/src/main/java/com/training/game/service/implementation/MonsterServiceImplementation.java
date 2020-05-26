@@ -38,6 +38,11 @@ public class MonsterServiceImplementation implements MonsterService {
     }
 
     @Override
+    public List<Monster> findAllByLocationNull() {
+        return monsterRepository.findAllByLocationNull();
+    }
+
+    @Override
     public List<Monster> separateOneGang(List<Monster> monsters) {
         List<Monster> monstersAfterFilter = monsters;
         for (int i =0; i <= 10; i++) {

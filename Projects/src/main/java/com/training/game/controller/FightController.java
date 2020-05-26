@@ -29,7 +29,7 @@ public class FightController {
                            @PathVariable(name = "locationId") Long monsterId){
         model.addAttribute("hero" , heroService.getOne(heroId));
         model.addAttribute("monster" , monsterService.getOne(monsterId));
-        return "hero";
+        return "fight";
     }
 
     @PostMapping("/fight/{heroId}/{monsterId}")
@@ -40,15 +40,13 @@ public class FightController {
         Monster monster = monsterService.getOne(monsterId);
         fightService.fight(hero, monster);
 
-
-
         List<Monster> monsters = monsterService.findAllByLocation(hero.getCurrentLocation().getId());
         List<Monster> monstersGang = monsterService.separateOneGang(monsters);
         Monster activeMonster = monstersGang.get((int)(Math.random()*monstersGang.size()));
         monstersGang.remove(activeMonster);
         model.addAttribute("hero" , hero);
-        model.addAttribute("monster" , hero);
+        model.addAttribute("monster" , activeMonster);
         model.addAttribute("monstersGang" , monstersGang);
-        return "hero";
+        return "fight";
     }
 }
