@@ -36,7 +36,7 @@
             <div class="col-1">critical attack</div>
             <div class="col-1">chance critical attack</div>
             <div class="col-1">chance dodge</div>
-            <div class="col-2">Add to Location's gang</div>
+            <div class="col-2">Edit/Remove</div>
         </div>
         <div class="row">
             <c:forEach var="monster" items="${monsters}">

@@ -20,7 +20,7 @@ public class Monster {
     private boolean boss;
     private boolean dead = false;
     private String pictureURL;
-    private int level; // to coins and exp4
+    private int level; // to coins and exp
     @Column(precision = 2)
     private float maxHealthPoint;
     @Column (precision = 2)
