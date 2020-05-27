@@ -12,5 +12,4 @@ import java.util.List;
 public interface MonsterRepository extends JpaRepository<Monster, Long> {
     List <Monster> findAllByLocation (Long id);
     List <Monster> findAllByLocationNull ();
-    Monster removeById (Long id);
 }

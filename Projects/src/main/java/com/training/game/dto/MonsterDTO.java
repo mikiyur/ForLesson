@@ -8,46 +8,42 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-
 public class MonsterDTO {
 
-        private Long id;
+    private Long id;
+    private int gang;
+    private String name;
+    private boolean boss;
+    private boolean dead;
+    private String pictureURL;
+    private int level; // to coins and exp
 
-        private int gang;
+    private float maxHealthPoint;
 
-        private String name;
+    private float maxManaPoint;
 
-        private boolean boss;
+    private float currentHealthPoint;
 
-        private String pictureURL;
+    private float currentManaPoint;
 
-        private int level; // to coins and exp
+    private float power;
 
-        private float maxHealthPoint;
+    private float spellPower;
 
-        private float maxManaPoint;
+    private float defence;
 
-        private float currentHealthPoint;
+    private float criticalAttack; //%
 
-        private float currentManaPoint;
+    private float chanceCriticalAttack; //% 0-75%
 
-        private float power;
-
-        private float spellPower;
-
-        private float defence;
-
-        private float criticalAttack; //%
-
-        private float chanceCriticalAttack; //% 0-75%
-
-        private float chanceDodge; //% 0-75%
+    private float chanceDodge; //% 0-75%
 
     public MonsterDTO(Monster monster) {
         this.id = monster.getId();
         this.gang = monster.getGang();
         this.name = monster.getName();
         this.boss = monster.isBoss();
+        this.dead = monster.isDead();
         this.pictureURL = monster.getPictureURL();
         this.level = monster.getLevel();
         this.maxHealthPoint = monster.getMaxHealthPoint();

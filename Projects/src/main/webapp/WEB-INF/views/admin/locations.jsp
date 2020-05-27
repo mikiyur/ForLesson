@@ -12,7 +12,17 @@
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
+<jsp:include page="header.jsp"/>
 <div class="container mt-2">
+    <div class="container mt-5">
+        <div class="col-12 text-center">
+            <form class="m-1" method="GET" action="create-location">
+                <button class="btn btn-success btn-primary btn-block" type="submit">Create new location</button>
+            </form>
+            <p> </p>
+            <p> </p>
+        </div>
+    </div>
     <c:forEach var="location" items="${locations}">
         <div class="row">
             <div class="col-4">
@@ -30,13 +40,13 @@
                 <p> Monsters: ${location.countMonsters}</p>
             </div>
             <div class="col-2 text-center">
-                <form class="m-1" method="GET" action="edit/${location.id}">
+                <form class="m-1" method="GET" action="edit-location/${location.id}">
                     <button class="btn btn-info btn-primary btn-block" type="submit">Edit</button>
                 </form>
             </div>
             <div class="col-2 text-center">
                 <form class="m-1" method="GET" action="remove/${location.id}">
-                    <button class="btn btn-danger btn-primary btn-block" type="submit">Delit</button>
+                    <button class="btn btn-danger btn-primary btn-block" type="submit">Remove</button>
                 </form>
             </div>
         </div>
@@ -45,12 +55,7 @@
         </div>
     </c:forEach>
 </div>
-<div class="container mt-5">
-    <div class="col-12 text-center">
-        <form class="m-1" method="GET" action="create">
-            <button class="btn btn-success btn-primary btn-block" type="submit">Create new location</button>
-        </form>
-    </div>
-</div>
+
+<jsp:include page="../footer.jsp"/>
 </body>
 </html>

@@ -12,7 +12,8 @@
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
-<div class="container-fluid mt-2">
+<jsp:include page="header.jsp"/>
+<div class="container-fluid m-3">
     <div class="row">
         <div class="col-4">
             <img src="${location.pictureURL}" class="img-fluid" alt="img">
@@ -22,7 +23,7 @@
             <p>Ready = ${location.ready}</p>
         </div>
         <div class="col-2 text-center">
-            <p> Minimum required level - ${location.minLevel} </p>
+            <p> Minimum required level to hero - ${location.minLevel} </p>
         </div>
         <div class="col-1 text-center">
             <p> Has boss - ${location.hasBoss}</p>
@@ -33,11 +34,10 @@
         </div>
         <div class="col-2 text-center">
             <form class="m-1" method="GET" action="set-ready-true/${location.id}">
-                <button class="btn btn-success btn-primary btn-block" type="submit">add to game</button>
+                <button class="btn btn-success btn-primary btn-block" type="submit">add this location to game</button>
             </form>
         </div>
     </div>
-
     <div class="row">
         <div class="col-4">
             <form class="m-1" method="GET" action="change-picture/${location.id}">
@@ -54,7 +54,7 @@
         <div class="col-2 text-center">
             <form class="m-1" method="GET" action="set-min-level/${location.id}">
                 <input class="form-control" name="min-level" id="min-level" type="number" placeholder="0-50">
-                <button class="btn btn-success btn-primary btn-block" type="submit">set required level</button>
+                <button class="btn btn-success btn-primary btn-block" type="submit">change required level</button>
             </form>
         </div>
         <div class="col-1 text-center">
@@ -62,7 +62,7 @@
         </div>
         <div class="col-2 text-center">
             <form class="m-1" method="GET" action="set-ready-false/${location.id}">
-                <button class="btn btn-danger btn-primary btn-block" type="submit">remove from game</button>
+                <button class="btn btn-danger btn-primary btn-block" type="submit">remove this location from game</button>
             </form>
         </div>
     </div>
@@ -206,5 +206,6 @@
         </div>
     </div>
 </div>
+<jsp:include page="../footer.jsp"/>
 </body>
 </html>

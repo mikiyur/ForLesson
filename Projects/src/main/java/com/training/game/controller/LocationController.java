@@ -35,7 +35,7 @@ public class LocationController {
      return "admin/locations";
     }
 
-    @GetMapping  ("admin/edit/{locationId}")
+    @GetMapping  ("admin/edit-location/{locationId}")
     public String editLocation (Model model, @PathVariable (name = "locationId") Long locationId){
         Location location = locationService.findById(locationId);
         List<Monster> locationMonsters = location.getMonsters();
@@ -43,10 +43,10 @@ public class LocationController {
         model.addAttribute("location", location);
         model.addAttribute("locationMonsters",locationMonsters);
         model.addAttribute("allMonsters",allMonsters);
-        return "admin/edit";
+        return "admin/edit-location";
     }
 
-    @GetMapping ("admin/edit/add/{locationId}/{monsterId}")
+    @GetMapping ("admin/edit-location/add/{locationId}/{monsterId}")
     public String addMonster (Model model,
                               @PathVariable (name = "locationId") Long locationId,
                               @PathVariable (name = "monsterId") Long monsterId,
@@ -58,19 +58,19 @@ public class LocationController {
         location.addMonster(monster);
         locationService.save(location);
 
-        return "redirect:/admin/edit/{locationId}";
+        return "redirect:/admin/edit-location/{locationId}";
 
     }
-    @GetMapping ("admin/edit/remove/{locationId}/{monsterId}")
+    @GetMapping ("admin/edit-location/remove/{locationId}/{monsterId}")
     public String removeMonster (Model model,
                               @PathVariable (name = "locationId") Long locationId,
                               @PathVariable (name = "monsterId") Long monsterId){
         Location location = locationService.findById(locationId);
         location.removeMonster(monsterService.findById(monsterId));
         locationService.save(location);
-        return "redirect:/admin/edit/{locationId}";
+        return "redirect:/admin/edit-location/{locationId}";
     }
-    @GetMapping ("admin/create")
+    @GetMapping ("admin/create-location")
     public String createNewLocation (Model model){
         locationService.save(new Location("New"));
         return "redirect:/admin/locations";
@@ -81,47 +81,47 @@ public class LocationController {
         return "redirect:/admin/locations";
     }
 
-    @GetMapping ("admin/edit/set-ready-true/{locationId}")
+    @GetMapping ("admin/edit-location/set-ready-true/{locationId}")
     public String setReadyTrue (Model model, @PathVariable (name = "locationId") Long locationId){
         Location location = locationService.findById(locationId);
         location.setReady(true);
         locationService.save(location);
-        return "redirect:/admin/edit/{locationId}";
+        return "redirect:/admin/edit-location/{locationId}";
     }
 
-    @GetMapping ("admin/edit/set-ready-false/{locationId}")
+    @GetMapping ("admin/edit-location/set-ready-false/{locationId}")
     public String setReadyFalse (Model model, @PathVariable (name = "locationId") Long locationId){
         Location location = locationService.findById(locationId);
         location.setReady(false);
         locationService.save(location);
-        return "redirect:/admin/edit/{locationId}";
+        return "redirect:/admin/edit-location/{locationId}";
     }
-    @GetMapping ("admin/edit/change-name/{locationId}")
+    @GetMapping ("admin/edit-location/change-name/{locationId}")
     public String changeName (Model model,
                                @PathVariable (name = "locationId") Long locationId,
                                @RequestParam (name = "name") String name){
         Location location = locationService.findById(locationId);
         location.setName(name);
         locationService.save(location);
-        return "redirect:/admin/edit/{locationId}";
+        return "redirect:/admin/edit-location/{locationId}";
     }
-    @GetMapping ("admin/edit/change-picture/{locationId}")
+    @GetMapping ("admin/edit-location/change-picture/{locationId}")
     public String changePicture (Model model,
                               @PathVariable (name = "locationId") Long locationId,
                               @RequestParam (name = "picture") String picture) {
         Location location = locationService.findById(locationId);
         location.setPictureURL(picture);
         locationService.save(location);
-        return "redirect:/admin/edit/{locationId}";
+        return "redirect:/admin/edit-location/{locationId}";
     }
 
-    @GetMapping ("admin/edit/set-min-level/{locationId}")
+    @GetMapping ("admin/edit-location/set-min-level/{locationId}")
     public String setMinLevel (Model model,
                                @PathVariable (name = "locationId") Long locationId,
                                @RequestParam (name = "min-level") int minLevel){
         Location location = locationService.findById(locationId);
         location.setMinLevel(minLevel);
         locationService.save(location);
-        return "redirect:/admin/edit/{locationId}";
+        return "redirect:/admin/edit-location/{locationId}";
     }
 }

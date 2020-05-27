@@ -30,7 +30,7 @@ public class MonsterServiceImplementation implements MonsterService {
     }
 
     @Override
-    public Monster removeById(Long id) { return monsterRepository.removeById(id); }
+    public void removeById(Long id) {monsterRepository.deleteById(id); }
 
     @Override
     public List<Monster> findAllByLocation(Long id) {

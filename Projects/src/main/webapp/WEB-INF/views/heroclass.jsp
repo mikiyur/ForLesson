@@ -12,6 +12,7 @@
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
+<jsp:include page="header.jsp"/>
 <div class="row mt-4">
     <div class="col-2 offset-5">
         <button type="submit" class="btn btn-success btn-lg">Fight</button>
@@ -40,5 +41,6 @@
         </div>
     </div>
 </div>
+<jsp:include page="footer.jsp"/>
 </body>
 </html>

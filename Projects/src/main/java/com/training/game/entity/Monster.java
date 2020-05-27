@@ -20,7 +20,7 @@ public class Monster {
     private boolean boss;
     private boolean dead = false;
     private String pictureURL;
-    private int level; // to coins and exp
+    private int level; // to coins and exp4
     @Column(precision = 2)
     private float maxHealthPoint;
     @Column (precision = 2)
@@ -57,7 +57,7 @@ public class Monster {
         this.maxManaPoint = monster.getMaxManaPoint();
         this.currentHealthPoint = monster.getCurrentHealthPoint();
         this.currentManaPoint = monster.getCurrentManaPoint();
-        this.power = monster.power;
+        this.power = monster.getPower();
         this.spellPower = monster.getSpellPower();
         this.defence = monster.getDefence();
         this.criticalAttack = monster.getCriticalAttack();

@@ -31,7 +31,6 @@
                     <p> </p>
                     <p> </p>
                     <p> </p>
-                    <p class="mt-4 mb-3 text-muted" > Made by Yuriy Mykytyuk 2020-2020</p>
                 </form:form>
             </div>
         </div>
