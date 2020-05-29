@@ -17,4 +17,20 @@ public class HeroClassServiceImplementation implements  HeroClassService {
     public List<HeroClass> findAll() {
         return heroClassRepository.findAll();
     }
+
+    @Override
+    public void save(HeroClass heroClass) {
+        heroClassRepository.save(heroClass);
+    }
+
+    @Override
+    public void removeById(Long id) {
+        heroClassRepository.deleteById(id);
+    }
+
+    @Override
+    public HeroClass findById(Long id) {
+        return heroClassRepository.findById(id).get();
+    }
+
 }

@@ -23,11 +23,11 @@ public class HeroClass {
     @Column(precision = 2)
     private float maxManaPerSkillPoint;
     @Column(precision = 2)
-    private float poverPerSkillPoint;
+    private float powerPerSkillPoint;
+    @Column(precision = 2)
+    private float spellPowerPerSkillPoint;
     @Column(precision = 2)
     private float defencePerSkillPoint;
-    @Column(precision = 2)
-    private float spellPoverPerSkillPoint;
     @Column(precision = 2)
     private float criticalAttackPerSkillPoint;
     @Column(precision = 2)
@@ -43,4 +43,5 @@ public class HeroClass {
         heroes.add(hero);
         hero.setHeroClass(this);
     }
+
 }
