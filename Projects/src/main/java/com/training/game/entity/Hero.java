@@ -17,10 +17,12 @@ public class Hero {
     private Long id;
     private String name;
     private String pictureURL;
+    private String fightLog = " ";
+    private String fightLogMonster = " ";
     @Column(precision = 2)
-    private float maxHealthPoint = 20;
+    private float maxHealthPoint = 10;
     @Column(precision = 2)
-    private float currentHealthPoint = 20;
+    private float currentHealthPoint = 10;
     @Column(precision = 2)
     private float currentManaPoint = 5;
     @Column(precision = 2)
@@ -32,11 +34,11 @@ public class Hero {
     @Column(precision = 2)
     private float spellPower = 1;
     @Column(precision = 2)
-    private float criticalAttack; //%
+    private float criticalAttack = 0; //%
     @Column(precision = 2)
-    private float chanceCriticalAttack; //0-75%
+    private float chanceCriticalAttack = 0; //0-75%
     @Column(precision = 2)
-    private float chanceDodge; //0-75%
+    private float chanceDodge = 0; //0-75%
     private int level = 1;
     private int levelProgress = -100;
     private int skillPoint = 5;

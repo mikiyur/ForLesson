@@ -10,6 +10,6 @@ import java.util.List;
 @Transactional
 @Repository
 public interface MonsterRepository extends JpaRepository<Monster, Long> {
-    List <Monster> findAllByLocation (Long id);
+    List <Monster> findAllByLocationId (Long id);
     List <Monster> findAllByLocationNull ();
 }

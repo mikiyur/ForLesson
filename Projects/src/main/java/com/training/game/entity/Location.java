@@ -16,7 +16,7 @@ public class Location {
 
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
-    private Long Id;
+    private Long id;
     private boolean ready  = false;
     private String name;
     private String pictureURL = "https://images.pexels.com/photos/912110/pexels-photo-912110.jpeg";
@@ -29,7 +29,7 @@ public class Location {
     private String bossName;
 
 
-    @OneToMany (fetch = FetchType.EAGER, mappedBy = "location",cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany (mappedBy = "location",cascade = CascadeType.ALL, orphanRemoval = true)
     @Setter (value = AccessLevel.PRIVATE)
     private List<Monster> monsters;
 
@@ -37,7 +37,7 @@ public class Location {
     @Setter (value = AccessLevel.PRIVATE)
     private List<Hero> passedBy;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "current_hero_id")
     private  Hero currentHero;
 
@@ -56,7 +56,6 @@ public class Location {
 
     public void addMonster (Monster monster){
         if (monster.isBoss()&&hasBoss) return;
-        monster.setId(null);
         monsters.add(monster);
         monster.setLocation(this);
         countMonsters ++;
@@ -66,8 +65,8 @@ public class Location {
         }
     }
     public void removeMonster (Monster monster){
+ //       monster.setLocation(null);
         monsters.remove(monster);
-        monster.setLocation(null);
         countMonsters --;
         if (monster.isBoss()){
             hasBoss = false;

@@ -2,6 +2,7 @@ package com.training.game.service.implementation;
 
 import com.training.game.entity.Hero;
 import com.training.game.entity.Location;
+import com.training.game.entity.Monster;
 import com.training.game.entity.SpellBook;
 import com.training.game.repository.HeroRepository;
 import com.training.game.service.HeroClassService;
@@ -38,16 +39,6 @@ public class HeroServiceImplementation implements HeroService {
     }
 
 
-    @Transactional
-    @Override
-    public Hero getHeroLikeFTLazy(Long id) {
-        Hero hero = heroRepository.getOne(id);
-        hero.getSpellBook().getSpells().size();
-        hero.getInventory().getArtifacts().size();
-        hero.getInventory().getPotions().size();
-        return hero;
-    }
-
     @Override
     public List<Hero> findAllByUserNull() {
         return heroRepository.findAllByUserNull();
@@ -61,6 +52,7 @@ public class HeroServiceImplementation implements HeroService {
         location.setCurrentHero(hero);
         locationService.save(location);
     }
+
 
 
 }

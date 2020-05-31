@@ -42,7 +42,7 @@ public class Monster {
     @Column (precision = 2)
     private float chanceDodge; //% 0-75%
 
-    @ManyToOne (fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne (fetch = FetchType.LAZY)
     @JoinColumn (name = "location_id")
     private Location location;
 
@@ -85,4 +85,5 @@ public class Monster {
     public int hashCode() {
         return Objects.hash(gang, name, level, maxHealthPoint, maxManaPoint, power, spellPower, defence);
     }
+
 }

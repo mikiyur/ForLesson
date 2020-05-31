@@ -13,7 +13,7 @@ public class Shop {
 
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
-    private Long Id;
+    private Long id;
 
     @OneToMany (fetch = FetchType.LAZY,cascade = CascadeType.ALL, mappedBy = "shop")
     private List <Potion> potions;

@@ -43,13 +43,13 @@
                     <p style="margin: 0px">${hero.chanceDodge}%</p>
                 </div>
                 <div class="col-7">
-                    <img src="https://i.ibb.co/7X74DFy/wizard-fight.jpg" class="img-fluid" alt="Responsive image">
+                    <img src=${hero.pictureURL} class="img-fluid" alt="Responsive image">
                 </div>
             </div>
         </div>
         <div class="col-2 text-center">
             <div style="margin-top: 150px"></div>
-            <form class="m-2" method="POST" action="/fight/${hero.id}/${monster.id}">
+            <form class="m-2" method="GET" action="attack/${monster.id}">
                 <button type="submit" class="btn btn-danger">Attack</button>
             </form>
             <div style="margin-top: 100px"></div>
@@ -65,7 +65,7 @@
             <h5> lv. ${monster.level} ${monster.name} </h5>
             <div class="row">
                 <div class="col-7">
-                    <img src="https://i.ibb.co/hKSGzrB/tartel.jpg" class="img-fluid" alt="Responsive image">
+                    <img src=${monster.pictureURL} class="img-fluid" alt="Responsive image">
                 </div>
                 <div class="col-5 text-left">
                     <p style="margin-bottom: 0px; margin-top: 5px">Health Point</p>
@@ -76,7 +76,7 @@
                     <p style="margin-bottom: 0px; margin-top: 5px">Mana Point</p>
                     <div class="progress">
                         <div class="progress-bar bg-info" role="progressbar"
-                             style="width: ${hero.currentManaPoint/hero.maxManaPoint*100}%">${monster.currentManaPoint}/${monster.maxManaPoint}</div>
+                             style="width: ${monster.currentManaPoint/monster.maxManaPoint*100}%">${monster.currentManaPoint}/${monster.maxManaPoint}</div>
                     </div>
                     <p style="margin-bottom: 0px; margin-top: 5px">Power</p>
                     <p style="margin: 0px">${monster.power}</p>
@@ -90,9 +90,27 @@
                     <p style="margin: 0px">${monster.chanceCriticalAttack}%</p>
                     <p style="margin-bottom: 0px; margin-top: 5px">Chance dodge</p>
                     <p style="margin: 0px">${monster.chanceDodge}%</p>
+                    <h5 style="margin-bottom: 0px; margin-top: 10px">Other monsters:</h5>
+                    <c:forEach var="monsterPassive" items="${monstersGang}">
+                        <p style="margin-bottom: 0px; margin-top: 5px">${monsterPassive.name}</p>
+                        <div class="progress">
+                            <div class="progress-bar bg-danger" role="progressbar"
+                                 style="width: ${monsterPassive.currentHealthPoint/monsterPassive.maxHealthPoint*100}%">${monsterPassive.currentHealthPoint}/${monsterPassive.maxHealthPoint}</div>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar bg-info" role="progressbar"
+                                 style="width: ${monsterPassive.currentManaPoint/monsterPassive.maxManaPoint*100}%">${monsterPassive.currentManaPoint}/${monsterPassive.maxManaPoint}</div>
+                        </div>
+                    </c:forEach>
                 </div>
             </div>
         </div>
+    </div>
+    <p> </p>
+    <div class="alert alert-warning  text-center" role="alert">
+        <h6 >- - * * Fight log * * - -</h6>
+        <p>Hero: ${hero.fightLog}</p>
+        <p>Monster: ${hero.fightLogMonster}</p>
     </div>
 </div>
 <jsp:include page="footer.jsp"/>

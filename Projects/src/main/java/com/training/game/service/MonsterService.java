@@ -9,9 +9,11 @@ public interface MonsterService {
     Monster getOne (Long id);
     Monster findById (Long id);
     void removeById (Long id);
-    List <Monster> findAllByLocation(Long id);
+    List <Monster> findAllByLocationId(Long id);
     List <Monster> findAllByLocationNull ();
-    List <Monster> separateOneGang (List <Monster> monsters);
+    List <Monster> separateNextGang (List <Monster> monsters);
+    List <Monster> separateTheGang (List<Monster> monsters, int gang);
+
 
 
 }

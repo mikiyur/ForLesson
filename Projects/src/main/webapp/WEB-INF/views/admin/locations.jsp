@@ -38,6 +38,7 @@
                     <p>Boss name: ${location.bossName}</p>
                 </c:if>
                 <p> Monsters: ${location.countMonsters}</p>
+                <p> min level: ${location.minLevel}</p>
             </div>
             <div class="col-2 text-center">
                 <form class="m-1" method="GET" action="edit-location/${location.id}">

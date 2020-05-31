@@ -60,7 +60,7 @@
                     <form class="m-1" method="GET" action="hero-class-change-health/${heroClass.id}">
                         <td><input class="form-control" name="maxHealthPerSkillPoint" id="maxHealthPerSkillPoint"
                                    type="number" step="0.1"
-                                   min="0.1" max="10.0" placeholder="0.1-10.0"></td>
+                                   min="0.1" max="15.0" placeholder="0.1-15.0"></td>
                         <td>
                             <button class="btn btn-success btn-primary btn-block" type="submit">change</button>
                         </td>
@@ -73,7 +73,7 @@
                     <form class="m-1" method="GET" action="hero-class-change-mana/${heroClass.id}">
                         <td><input class="form-control" name="maxManaPerSkillPoint" id="maxManaPerSkillPoint"
                                    type="number" step="0.1"
-                                   min="0.1" max="10.0" placeholder="0.1-10.0"></td>
+                                   min="0.1" max="8.0" placeholder="0.1-8.0"></td>
                         <td>
                             <button class="btn btn-success btn-primary btn-block" type="submit">change</button>
                         </td>
@@ -86,7 +86,7 @@
                     <form class="m-1" method="GET" action="hero-class-change-power/${heroClass.id}">
                         <td><input class="form-control" name="powerPerSkillPoint" id="powerPerSkillPoint" type="number"
                                    step="0.1"
-                                   min="0.1" max="10.0" placeholder="0.1-10.0"></td>
+                                   min="0.1" max="8.0" placeholder="0.1-8.0"></td>
                         <td>
                             <button class="btn btn-success btn-primary btn-block" type="submit">change</button>
                         </td>
@@ -98,7 +98,7 @@
                     <td>${heroClass.spellPowerPerSkillPoint}</td>
                     <form class="m-1" method="GET" action="hero-class-change-spell-power/${heroClass.id}">
                         <td><input class="form-control" name="spellPowerPerSkillPoint" id="spellPowerPerSkillPoint" type="number" step="0.1"
-                                   min="0.1" max="10.0" placeholder="0.1-10.0"></td>
+                                   min="0.1" max="8.0" placeholder="0.1-8.0"></td>
                         <td>
                             <button class="btn btn-success btn-primary btn-block" type="submit">change</button>
                         </td>
@@ -111,7 +111,7 @@
                     <form class="m-1" method="GET" action="hero-class-change-defence/${heroClass.id}">
                         <td><input class="form-control" name="defencePerSkillPoint" id="defencePerSkillPoint"
                                    type="number" step="0.1"
-                                   min="0.1" max="10.0" placeholder="0.1-10.0"></td>
+                                   min="0.1" max="5.0" placeholder="0.1-5.0"></td>
                         <td>
                             <button class="btn btn-success btn-primary btn-block" type="submit">change</button>
                         </td>
@@ -137,7 +137,7 @@
                     <form class="m-1" method="GET" action="hero-class-change-chance-critical-attack/${heroClass.id}">
                         <td><input class="form-control" name="chanceCriticalAttackPerSkillPoint"
                                    id="chanceCriticalAttackPerSkillPoint" type="number" step="0.1"
-                                   min="0.1" max="10.0" placeholder="0.1-10.0"></td>
+                                   min="0.1" max="5.0" placeholder="0.1-5.0"></td>
                         <td>
                             <button class="btn btn-success btn-primary btn-block" type="submit">change</button>
                         </td>
@@ -149,7 +149,7 @@
                     <td>${heroClass.chanceDodgePerSkillPoint}%</td>
                     <form class="m-1" method="GET" action="hero-class-chance-dodge/${heroClass.id}">
                         <td><input class="form-control" name="chanceDodgePerSkillPoint" id="chanceDodgePerSkillPoint" type="number" step="0.1"
-                                   min="0.1" max="10.0" placeholder="0.1-10.0"></td>
+                                   min="0.1" max="5.0" placeholder="0.1-5.0"></td>
                         <td>
                             <button class="btn btn-success btn-primary btn-block" type="submit">change</button>
                         </td>

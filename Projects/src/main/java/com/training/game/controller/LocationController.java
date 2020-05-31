@@ -38,7 +38,8 @@ public class LocationController {
     @GetMapping  ("admin/edit-location/{locationId}")
     public String editLocation (Model model, @PathVariable (name = "locationId") Long locationId){
         Location location = locationService.findById(locationId);
-        List<Monster> locationMonsters = location.getMonsters();
+//        List<Monster> locationMonsters = location.getMonsters();
+        List<Monster> locationMonsters = monsterService.findAllByLocationId(locationId);
         List<Monster> allMonsters = monsterService.findAllByLocationNull();
         model.addAttribute("location", location);
         model.addAttribute("locationMonsters",locationMonsters);
@@ -53,7 +54,6 @@ public class LocationController {
                               @RequestParam (value = "gang") int gang){
         Location location = locationService.findById(locationId);
         Monster monster = new Monster(monsterService.findById(monsterId));
-        monster.setId(null);
         monster.setGang(gang);
         location.addMonster(monster);
         locationService.save(location);

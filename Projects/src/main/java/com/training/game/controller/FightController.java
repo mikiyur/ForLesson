@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
-import java.util.stream.Collectors;
+
 @Controller
 public class FightController {
     @Autowired
@@ -23,30 +23,45 @@ public class FightController {
     @Autowired
     private FightService fightService;
 
-    @GetMapping("/fight/{heroId}/{locationId}")
+    @GetMapping("fight/{heroId}/{locationId}")
     public String getFight(Model model,
                            @PathVariable(name = "heroId") Long heroId,
-                           @PathVariable(name = "locationId") Long monsterId){
-        model.addAttribute("hero" , heroService.getOne(heroId));
-        model.addAttribute("monster" , monsterService.getOne(monsterId));
+                           @PathVariable(name = "locationId") Long locationId) {
+        List<Monster> monsters = monsterService.findAllByLocationId(locationId);
+        List<Monster> monstersGang = monsterService.separateNextGang(monsters);
+        Monster activeMonster;
+        do {
+            activeMonster = monstersGang.get((int) (Math.random() * monstersGang.size()));
+        } while (activeMonster.isDead());
+        monstersGang.remove(activeMonster);
+        model.addAttribute("hero", heroService.getOne(heroId));
+        model.addAttribute("monster", activeMonster);
+        model.addAttribute("monstersGang", monstersGang); //  no active monsters
         return "fight";
     }
 
-    @PostMapping("/fight/{heroId}/{monsterId}")
-    public String fight(Model model,
-                        @PathVariable(name = "heroId") Long heroId,
+    @GetMapping("fight/{heroId}/attack/{monsterId}")
+    public String fight(@PathVariable(name = "heroId") Long heroId,
                         @PathVariable(name = "monsterId") Long monsterId) {
         Hero hero = heroService.getOne(heroId);
         Monster monster = monsterService.getOne(monsterId);
+        Long locationId = monster.getLocation().getId();
+        List<Monster> monsters = monsterService.findAllByLocationId(locationId);
+//        List<Monster> monsters = monsterService.findAllByLocationId(hero.getCurrentLocation().getId());//to do!!!!!!!
+        List<Monster> monstersGang = monsterService.separateTheGang(monsters, monster.getGang());
         fightService.fight(hero, monster);
+        monsterService.save(monster);
+        heroService.save(hero);
 
-        List<Monster> monsters = monsterService.findAllByLocation(hero.getCurrentLocation().getId());
-        List<Monster> monstersGang = monsterService.separateOneGang(monsters);
-        Monster activeMonster = monstersGang.get((int)(Math.random()*monstersGang.size()));
-        monstersGang.remove(activeMonster);
-        model.addAttribute("hero" , hero);
-        model.addAttribute("monster" , activeMonster);
-        model.addAttribute("monstersGang" , monstersGang);
-        return "fight";
+        if (hero.getCurrentHealthPoint() <= 0) {
+            fightService.heroIsLoser(hero, monstersGang);
+//            return "hero/{heroId}"; ------------------------------------------------------------------- to do
+        }
+
+        if (monstersGang.stream().allMatch(x -> x.isDead())) {
+            fightService.heroIsWinner(hero, monstersGang);
+//            return "hero/{heroId}"; ------------------------------------------------------------------- to do
+        }
+        return "redirect:/fight/{heroId}/"+locationId;
     }
 }
