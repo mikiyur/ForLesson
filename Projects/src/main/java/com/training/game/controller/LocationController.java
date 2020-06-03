@@ -3,6 +3,7 @@ package com.training.game.controller;
 import com.training.game.entity.Location;
 import com.training.game.entity.Monster;
 import com.training.game.service.LocationService;
+import com.training.game.service.MonsterGangComparator;
 import com.training.game.service.MonsterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -38,8 +39,8 @@ public class LocationController {
     @GetMapping  ("admin/edit-location/{locationId}")
     public String editLocation (Model model, @PathVariable (name = "locationId") Long locationId){
         Location location = locationService.findById(locationId);
-//        List<Monster> locationMonsters = location.getMonsters();
         List<Monster> locationMonsters = monsterService.findAllByLocationId(locationId);
+        locationMonsters.sort(new MonsterGangComparator());
         List<Monster> allMonsters = monsterService.findAllByLocationNull();
         model.addAttribute("location", location);
         model.addAttribute("locationMonsters",locationMonsters);

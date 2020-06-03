@@ -1,8 +1,10 @@
 package com.training.game.entity;
 
+import javassist.expr.Instanceof;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import sun.security.jca.GetInstance;
 
 import javax.persistence.*;
 import java.util.Objects;
@@ -23,27 +25,27 @@ public class Monster {
     private int level; // to coins and exp
     @Column(precision = 2)
     private float maxHealthPoint;
-    @Column (precision = 2)
+    @Column(precision = 2)
     private float maxManaPoint;
-    @Column (precision = 2)
+    @Column(precision = 2)
     private float currentHealthPoint;
-    @Column (precision = 2)
+    @Column(precision = 2)
     private float currentManaPoint;
-    @Column (precision = 2)
+    @Column(precision = 2)
     private float power;
-    @Column (precision = 2)
+    @Column(precision = 2)
     private float spellPower;
-    @Column (precision = 2)
+    @Column(precision = 2)
     private float defence;
-    @Column (precision = 2)
+    @Column(precision = 2)
     private float criticalAttack; //%
     @Column(precision = 2)
     private float chanceCriticalAttack; //% 0-75%
-    @Column (precision = 2)
+    @Column(precision = 2)
     private float chanceDodge; //% 0-75%
 
-    @ManyToOne (fetch = FetchType.LAZY)
-    @JoinColumn (name = "location_id")
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "location_id")
     private Location location;
 
     public Monster(Monster monster) {
@@ -65,6 +67,7 @@ public class Monster {
         this.chanceDodge = monster.getChanceDodge();
         this.location = monster.getLocation();
     }
+
 
     @Override
     public boolean equals(Object o) {

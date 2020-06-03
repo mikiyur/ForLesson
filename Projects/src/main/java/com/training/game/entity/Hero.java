@@ -14,6 +14,7 @@ import java.util.List;
 public class Hero {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Setter (AccessLevel.PRIVATE)
     private Long id;
     private String name;
     private String pictureURL;

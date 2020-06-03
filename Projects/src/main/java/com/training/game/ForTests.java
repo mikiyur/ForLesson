@@ -1,5 +1,7 @@
 package com.training.game;
 
+import javax.persistence.OneToMany;
+
 public class ForTests {
     public static void main(String[] args) {
 
@@ -8,6 +10,7 @@ public class ForTests {
         for (int i = 0; i < 100; i++) {
             System.out.println(((Math.random()*0.8)+0.6) * 100);
         }
+
 
 
     }

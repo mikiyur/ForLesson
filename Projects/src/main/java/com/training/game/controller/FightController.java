@@ -4,6 +4,7 @@ import com.training.game.entity.Hero;
 import com.training.game.entity.Monster;
 import com.training.game.service.FightService;
 import com.training.game.service.HeroService;
+import com.training.game.service.MonsterGangComparator;
 import com.training.game.service.MonsterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -49,18 +51,19 @@ public class FightController {
         List<Monster> monsters = monsterService.findAllByLocationId(locationId);
 //        List<Monster> monsters = monsterService.findAllByLocationId(hero.getCurrentLocation().getId());//to do!!!!!!!
         List<Monster> monstersGang = monsterService.separateTheGang(monsters, monster.getGang());
-        fightService.fight(hero, monster);
+        fightService.attack(hero, monster);
         monsterService.save(monster);
         heroService.save(hero);
 
         if (hero.getCurrentHealthPoint() <= 0) {
-            fightService.heroIsLoser(hero, monstersGang);
-//            return "hero/{heroId}"; ------------------------------------------------------------------- to do
+            fightService.heroDied(hero, monstersGang);
+            return "hero-died";// ------------------------------------------------------------------- to do
         }
 
         if (monstersGang.stream().allMatch(x -> x.isDead())) {
-            fightService.heroIsWinner(hero, monstersGang);
-//            return "hero/{heroId}"; ------------------------------------------------------------------- to do
+            fightService.heroWon(hero, monstersGang);
+
+            return "hero-won";
         }
         return "redirect:/fight/{heroId}/"+locationId;
     }

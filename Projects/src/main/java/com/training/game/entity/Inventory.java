@@ -23,6 +23,7 @@ public class Inventory {
     @OneToOne
     @JoinColumn (name = "hero_id")
     @MapsId
+    @Setter (AccessLevel.PRIVATE)
     private Hero hero;
 
     @OneToMany (fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "inventory", orphanRemoval = true)

@@ -10,14 +10,17 @@ import java.util.List;
 @Service
 public class FightServiceImplementation implements FightService {
     @Override
-    public void fight(Hero hero, Monster monster) {
-        hero.setFightLogMonster(" ");
+    public void attack(Hero hero, Monster monster) {
         hero.setFightLog(" ");
+        hero.setFightLogMonster(" ");
+
+
         heroAttack(hero, monster);
         if (monsterDied(monster)) {
             return;
         }
         monsterAttack(monster, hero);
+
     }
 
 
@@ -33,7 +36,7 @@ public class FightServiceImplementation implements FightService {
 
     private void heroAttack(Hero hero, Monster monster) {
         if (testChance(monster.getChanceDodge())) {
-            hero.setFightLog(hero.getName() + " attacks " + monster.getName() + " -->but " + monster.getName() + " dodges" + "\n");
+            hero.setFightLog(hero.getName() + " attacked " + monster.getName() + " -->but " + monster.getName() + " dodges" + "\n");
             return;
         }
         float damage = hero.getPower();
@@ -44,7 +47,7 @@ public class FightServiceImplementation implements FightService {
         }
         damage = addRandomFortyPercent(damage);
         damage = defend(damage, monster.getDefence());
-        hero.setFightLog(hero.getName()+" attacks "+monster.getName()+ " --> and caused " + damage +" damage"+ hero.getFightLog());
+        hero.setFightLog(hero.getName()+" attacked "+monster.getName()+ " --> and caused " + damage +" damage"+ hero.getFightLog());
         monster.setCurrentHealthPoint(monster.getCurrentHealthPoint() - damage);
 
     }
@@ -87,13 +90,35 @@ public class FightServiceImplementation implements FightService {
 
 
     @Override
-    public void heroIsLoser(Hero hero, List<Monster> monstersGang) {
+    public void heroDied(Hero hero, List<Monster> monstersGang) {
 
     }
 
     @Override
-    public void heroIsWinner(Hero hero, List<Monster> monstersGang) {
+    public void heroWon(Hero hero, List<Monster> monstersGang) {
+        hero.setCurrentHealthPoint(hero.getMaxHealthPoint());
+        hero.setCurrentManaPoint(hero.getMaxManaPoint());
+        float sumMonstersLevels = 0;
+        for (Monster monster : monstersGang) {
+            monster.setCurrentHealthPoint(monster.getCurrentHealthPoint());
+            monster.setCurrentManaPoint(monster.getMaxManaPoint());
+            if (monster.isBoss()){
+                sumMonstersLevels += monster.getLevel()*3;
+            }else{
+                sumMonstersLevels += monster.getLevel();
+            }
+        }
+        int receivedCoins = (int)addRandomFortyPercent(sumMonstersLevels*2);
+        hero.getInventory().setCoins(hero.getInventory().getCoins() + receivedCoins);
+        int receivedExperience = (int)addRandomFortyPercent(sumMonstersLevels*5);
+        heroAddExperience (hero, receivedExperience);
+    }
 
+    private void heroAddExperience(Hero hero, int receivedExperience) {
+//-----------------------------------------------------------------------to do
+        for (int i = receivedExperience; i > 0; i--){
+//-----------------------------------------------------------------------to do
+        }
     }
 
 
