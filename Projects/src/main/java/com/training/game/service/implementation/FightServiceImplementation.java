@@ -3,24 +3,32 @@ package com.training.game.service.implementation;
 import com.training.game.entity.Hero;
 import com.training.game.entity.Monster;
 import com.training.game.service.FightService;
+import com.training.game.service.HeroClassService;
+import com.training.game.service.HeroService;
+import com.training.game.service.MonsterService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+
 @Service
 public class FightServiceImplementation implements FightService {
+    @Autowired
+    HeroService heroService;
+    @Autowired
+    MonsterService monsterService;
+
+
     @Override
     public void attack(Hero hero, Monster monster) {
         hero.setFightLog(" ");
         hero.setFightLogMonster(" ");
-
-
         heroAttack(hero, monster);
         if (monsterDied(monster)) {
             return;
         }
         monsterAttack(monster, hero);
-
     }
 
 
@@ -91,17 +99,15 @@ public class FightServiceImplementation implements FightService {
 
     @Override
     public void heroDied(Hero hero, List<Monster> monstersGang) {
-
     }
 
     @Override
     public void heroWon(Hero hero, List<Monster> monstersGang) {
         hero.setCurrentHealthPoint(hero.getMaxHealthPoint());
         hero.setCurrentManaPoint(hero.getMaxManaPoint());
+
         float sumMonstersLevels = 0;
         for (Monster monster : monstersGang) {
-            monster.setCurrentHealthPoint(monster.getCurrentHealthPoint());
-            monster.setCurrentManaPoint(monster.getMaxManaPoint());
             if (monster.isBoss()){
                 sumMonstersLevels += monster.getLevel()*3;
             }else{
@@ -115,9 +121,20 @@ public class FightServiceImplementation implements FightService {
     }
 
     private void heroAddExperience(Hero hero, int receivedExperience) {
-//-----------------------------------------------------------------------to do
         for (int i = receivedExperience; i > 0; i--){
-//-----------------------------------------------------------------------to do
+            hero.setLevelProgress(hero.getLevelProgress()+1);
+            if (hero.getLevelProgress() >= 0){
+                heroLevelUp(hero);
+            }
+        }
+    }
+
+    private void heroLevelUp(Hero hero) {
+        hero.setLevel(hero.getLevel()+1);
+        hero.setLevelProgress(-(80 + (hero.getLevel() * 20) + (hero.getLevel() * hero.getLevel())));
+        hero.setSkillPoint(hero.getSkillPoint()+3);
+        if (hero.getLevel()%3==0) {
+            hero.setSpellPoint(hero.getSpellPoint()+1);
         }
     }
 

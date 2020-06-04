@@ -57,12 +57,15 @@ public class FightController {
 
         if (hero.getCurrentHealthPoint() <= 0) {
             fightService.heroDied(hero, monstersGang);
+            monsterService.save(monster);
+            heroService.save(hero);
             return "hero-died";// ------------------------------------------------------------------- to do
         }
 
         if (monstersGang.stream().allMatch(x -> x.isDead())) {
             fightService.heroWon(hero, monstersGang);
-
+            monsterService.save(monster);
+            heroService.save(hero);
             return "hero-won";
         }
         return "redirect:/fight/{heroId}/"+locationId;

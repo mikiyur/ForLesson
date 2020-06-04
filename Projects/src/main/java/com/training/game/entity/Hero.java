@@ -63,7 +63,7 @@ public class Hero {
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "hero", orphanRemoval = true)
     private SpellBook spellBook = new SpellBook(this);
 
-    @OneToOne(mappedBy = "currentHero", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "currentHero", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "current_lication_id")
     private Location currentLocation;
 
