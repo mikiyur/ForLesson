@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class MonsterServiceImplementation implements MonsterService {
+public class MonsterServiceImpl implements MonsterService {
     @Autowired
     private MonsterRepository monsterRepository;
 

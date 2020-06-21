@@ -13,7 +13,7 @@ import java.util.List;
 
 
 @Service
-public class FightServiceImplementation implements FightService {
+public class FightServiceImpl implements FightService {
     @Autowired
     HeroService heroService;
     @Autowired

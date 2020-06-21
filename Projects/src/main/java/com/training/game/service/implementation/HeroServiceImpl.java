@@ -18,7 +18,7 @@ import java.util.Set;
 
 
 @Service
-public class HeroServiceImplementation implements HeroService {
+public class HeroServiceImpl implements HeroService {
 
     @Autowired
     private HeroRepository heroRepository;

@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class LocationServiceImplementation implements LocationService {
+public class LocationServiceImpl implements LocationService {
     @Autowired
     LocationRepository locationRepository;
 

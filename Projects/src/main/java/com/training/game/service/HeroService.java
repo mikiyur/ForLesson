@@ -15,7 +15,7 @@ public interface HeroService {
      Hero save (Hero hero);
      Hero getOne (Long id);
      Hero findById (Long id);
-     List<Hero> findAllByUserNull ();
+     List<Hero> findAllByUserNull();
      void setNewCurrentLocation (Hero hero, Location location);
 
 }
